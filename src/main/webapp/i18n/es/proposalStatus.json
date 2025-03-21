@@ -1,0 +1,10 @@
+{
+  "txokoDevApp": {
+    "ProposalStatus": {
+      "null": "",
+      "ENVOYE": "ENVOYE",
+      "ACCEPTE": "ACCEPTE",
+      "REFUSE": "REFUSE"
+    }
+  }
+}

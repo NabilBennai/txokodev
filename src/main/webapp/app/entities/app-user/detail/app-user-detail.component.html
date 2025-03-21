@@ -1,0 +1,50 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (appUser(); as appUserRef) {
+      <div>
+        <h2 data-cy="appUserDetailsHeading"><span jhiTranslate="txokoDevApp.appUser.detail.title">App User</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ appUserRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="txokoDevApp.appUser.fullName">Full Name</span></dt>
+          <dd>
+            <span>{{ appUserRef.fullName }}</span>
+          </dd>
+          <dt><span jhiTranslate="txokoDevApp.appUser.bio">Bio</span></dt>
+          <dd>
+            <span>{{ appUserRef.bio }}</span>
+          </dd>
+          <dt><span jhiTranslate="txokoDevApp.appUser.city">City</span></dt>
+          <dd>
+            <span>{{ appUserRef.city }}</span>
+          </dd>
+          <dt><span jhiTranslate="txokoDevApp.appUser.isDeveloper">Is Developer</span></dt>
+          <dd>
+            <span>{{ appUserRef.isDeveloper }}</span>
+          </dd>
+          <dt><span jhiTranslate="txokoDevApp.appUser.user">User</span></dt>
+          <dd>
+            <span>{{ appUserRef.user?.login }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+        </button>
+
+        <button type="button" [routerLink]="['/app-user', appUserRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

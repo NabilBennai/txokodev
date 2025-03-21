@@ -1,0 +1,58 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (projectIdea(); as projectIdeaRef) {
+      <div>
+        <h2 data-cy="projectIdeaDetailsHeading"><span jhiTranslate="txokoDevApp.projectIdea.detail.title">Project Idea</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ projectIdeaRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="txokoDevApp.projectIdea.title">Title</span></dt>
+          <dd>
+            <span>{{ projectIdeaRef.title }}</span>
+          </dd>
+          <dt><span jhiTranslate="txokoDevApp.projectIdea.description">Description</span></dt>
+          <dd>
+            <span>{{ projectIdeaRef.description }}</span>
+          </dd>
+          <dt><span jhiTranslate="txokoDevApp.projectIdea.budget">Budget</span></dt>
+          <dd>
+            <span>{{ projectIdeaRef.budget }}</span>
+          </dd>
+          <dt><span jhiTranslate="txokoDevApp.projectIdea.deadline">Deadline</span></dt>
+          <dd>
+            <span>{{ projectIdeaRef.deadline | formatMediumDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="txokoDevApp.projectIdea.location">Location</span></dt>
+          <dd>
+            <span>{{ projectIdeaRef.location }}</span>
+          </dd>
+          <dt><span jhiTranslate="txokoDevApp.projectIdea.appUser">App User</span></dt>
+          <dd>
+            @if (projectIdea()!.appUser) {
+              <div>
+                <a [routerLink]="['/app-user', projectIdea()!.appUser?.id, 'view']">{{ projectIdeaRef.appUser?.fullName }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+        </button>
+
+        <button type="button" [routerLink]="['/project-idea', projectIdeaRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

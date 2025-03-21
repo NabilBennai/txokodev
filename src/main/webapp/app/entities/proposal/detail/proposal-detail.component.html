@@ -1,0 +1,60 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (proposal(); as proposalRef) {
+      <div>
+        <h2 data-cy="proposalDetailsHeading"><span jhiTranslate="txokoDevApp.proposal.detail.title">Proposal</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ proposalRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="txokoDevApp.proposal.message">Message</span></dt>
+          <dd>
+            <span>{{ proposalRef.message }}</span>
+          </dd>
+          <dt><span jhiTranslate="txokoDevApp.proposal.price">Price</span></dt>
+          <dd>
+            <span>{{ proposalRef.price }}</span>
+          </dd>
+          <dt><span jhiTranslate="txokoDevApp.proposal.status">Status</span></dt>
+          <dd>
+            <span [jhiTranslate]="'txokoDevApp.ProposalStatus.' + (proposalRef.status ?? 'null')">{{
+              { null: '', ENVOYE: 'ENVOYE', ACCEPTE: 'ACCEPTE', REFUSE: 'REFUSE' }[proposalRef.status ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="txokoDevApp.proposal.appUser">App User</span></dt>
+          <dd>
+            @if (proposal()!.appUser) {
+              <div>
+                <a [routerLink]="['/app-user', proposal()!.appUser?.id, 'view']">{{ proposalRef.appUser?.fullName }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="txokoDevApp.proposal.projectIdea">Project Idea</span></dt>
+          <dd>
+            @if (proposal()!.projectIdea) {
+              <div>
+                <a [routerLink]="['/project-idea', proposal()!.projectIdea?.id, 'view']">{{ proposalRef.projectIdea?.title }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+        </button>
+
+        <button type="button" [routerLink]="['/proposal', proposalRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>
