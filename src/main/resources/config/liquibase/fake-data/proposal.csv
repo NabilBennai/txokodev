@@ -1,0 +1,11 @@
+id;message;price;status;app_user_id;project_idea_id
+1;../fake-data/blob/hipster.txt;15669;ACCEPTE;1;1
+2;../fake-data/blob/hipster.txt;8977;ACCEPTE;2;2
+3;../fake-data/blob/hipster.txt;14255;ACCEPTE;3;3
+4;../fake-data/blob/hipster.txt;20603;ACCEPTE;4;4
+5;../fake-data/blob/hipster.txt;32424;REFUSE;5;5
+6;../fake-data/blob/hipster.txt;19680;REFUSE;6;6
+7;../fake-data/blob/hipster.txt;742;REFUSE;7;7
+8;../fake-data/blob/hipster.txt;3996;ENVOYE;8;8
+9;../fake-data/blob/hipster.txt;12153;ENVOYE;9;9
+10;../fake-data/blob/hipster.txt;21143;ENVOYE;10;10

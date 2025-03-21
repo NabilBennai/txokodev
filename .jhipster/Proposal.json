@@ -1,0 +1,49 @@
+{
+  "annotations": {
+    "changelogDate": "20250321000703"
+  },
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "message",
+      "fieldType": "TextBlob",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "price",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "ProposalStatus",
+      "fieldValues": "ENVOYE,ACCEPTE,REFUSE"
+    }
+  ],
+  "jpaMetamodelFiltering": true,
+  "name": "Proposal",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "fullName",
+      "otherEntityName": "appUser",
+      "otherEntityRelationshipName": "proposal",
+      "relationshipName": "appUser",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": ["required"]
+    },
+    {
+      "otherEntityField": "title",
+      "otherEntityName": "projectIdea",
+      "otherEntityRelationshipName": "proposal",
+      "relationshipName": "projectIdea",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": ["required"]
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

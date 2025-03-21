@@ -1,0 +1,28 @@
+{
+  "txokoDevApp": {
+    "proposal": {
+      "home": {
+        "title": "Proposals",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Proposal",
+        "createOrEditLabel": "Créer ou éditer un Proposal",
+        "notFound": "Aucun Proposal trouvé"
+      },
+      "created": "Un nouveau Proposal a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Proposal avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Proposal avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Proposal {{ id }} ?"
+      },
+      "detail": {
+        "title": "Proposal"
+      },
+      "id": "ID",
+      "message": "Message",
+      "price": "Price",
+      "status": "Status",
+      "appUser": "App User",
+      "projectIdea": "Project Idea"
+    }
+  }
+}

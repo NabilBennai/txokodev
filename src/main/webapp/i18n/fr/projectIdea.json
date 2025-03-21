@@ -1,0 +1,30 @@
+{
+  "txokoDevApp": {
+    "projectIdea": {
+      "home": {
+        "title": "ProjectIdeas",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Project Idea",
+        "createOrEditLabel": "Créer ou éditer un Project Idea",
+        "notFound": "Aucun Project Idea trouvé"
+      },
+      "created": "Un nouveau Project Idea a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Project Idea avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Project Idea avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Project Idea {{ id }} ?"
+      },
+      "detail": {
+        "title": "Project Idea"
+      },
+      "id": "ID",
+      "title": "Title",
+      "description": "Description",
+      "budget": "Budget",
+      "deadline": "Deadline",
+      "location": "Location",
+      "appUser": "App User",
+      "proposal": "Proposal"
+    }
+  }
+}

@@ -1,0 +1,127 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-proposal-heading" data-cy="ProposalCreateUpdateHeading" jhiTranslate="txokoDevApp.proposal.home.createOrEditLabel">
+        Créer ou éditer un Proposal
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="txokoDevApp.proposal.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        @let messageRef = editForm.get('message')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_message" jhiTranslate="txokoDevApp.proposal.message">Message</label>
+          <textarea class="form-control" name="message" id="field_message" data-cy="message" formControlName="message"></textarea>
+          @if (messageRef.invalid && (messageRef.dirty || messageRef.touched)) {
+            <div>
+              @if (editForm.get('message')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Ce champ est obligatoire.</small>
+              }
+            </div>
+          }
+        </div>
+
+        @let priceRef = editForm.get('price')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_price" jhiTranslate="txokoDevApp.proposal.price">Price</label>
+          <input type="number" class="form-control" name="price" id="field_price" data-cy="price" formControlName="price" />
+          @if (priceRef.invalid && (priceRef.dirty || priceRef.touched)) {
+            <div>
+              @if (editForm.get('price')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Ce champ est obligatoire.</small>
+              }
+              <small class="form-text text-danger" [hidden]="!editForm.get('price')?.errors?.number" jhiTranslate="entity.validation.number"
+                >Ce champ doit être un nombre.</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_status" jhiTranslate="txokoDevApp.proposal.status">Status</label>
+          <select class="form-control" name="status" formControlName="status" id="field_status" data-cy="status">
+            <option [ngValue]="null">{{ 'txokoDevApp.ProposalStatus.null' | translate }}</option>
+            @for (proposalStatus of proposalStatusValues; track $index) {
+              <option [value]="proposalStatus">{{ 'txokoDevApp.ProposalStatus.' + proposalStatus | translate }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_appUser" jhiTranslate="txokoDevApp.proposal.appUser">App User</label>
+          <select
+            class="form-control"
+            id="field_appUser"
+            data-cy="appUser"
+            name="appUser"
+            formControlName="appUser"
+            [compareWith]="compareAppUser"
+          >
+            @if (editForm.get(['appUser'])!.value == null) {
+              <option [ngValue]="null" selected></option>
+            }
+            @for (appUserOption of appUsersSharedCollection; track $index) {
+              <option [ngValue]="appUserOption">{{ appUserOption.fullName }}</option>
+            }
+          </select>
+        </div>
+        @if (editForm.get(['appUser'])!.invalid && (editForm.get(['appUser'])!.dirty || editForm.get(['appUser'])!.touched)) {
+          <div>
+            @if (editForm.get(['appUser'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">Ce champ est obligatoire.</small>
+            }
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_projectIdea" jhiTranslate="txokoDevApp.proposal.projectIdea">Project Idea</label>
+          <select
+            class="form-control"
+            id="field_projectIdea"
+            data-cy="projectIdea"
+            name="projectIdea"
+            formControlName="projectIdea"
+            [compareWith]="compareProjectIdea"
+          >
+            @if (editForm.get(['projectIdea'])!.value == null) {
+              <option [ngValue]="null" selected></option>
+            }
+            @for (projectIdeaOption of projectIdeasSharedCollection; track $index) {
+              <option [ngValue]="projectIdeaOption">{{ projectIdeaOption.title }}</option>
+            }
+          </select>
+        </div>
+        @if (editForm.get(['projectIdea'])!.invalid && (editForm.get(['projectIdea'])!.dirty || editForm.get(['projectIdea'])!.touched)) {
+          <div>
+            @if (editForm.get(['projectIdea'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">Ce champ est obligatoire.</small>
+            }
+          </div>
+        }
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Annuler</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Sauvegarder</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
